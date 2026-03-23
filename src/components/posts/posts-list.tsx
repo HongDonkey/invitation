@@ -110,7 +110,7 @@ export function PostsList({ initialEntries }: PostsListProps) {
         </div>
         <Button
           onClick={handleCreateNew}
-          className="flex gap-2"
+          className="flex gap-2 hover:text-blue-500 transition-colors cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           작성

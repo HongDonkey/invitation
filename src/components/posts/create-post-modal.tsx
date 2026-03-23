@@ -84,27 +84,6 @@ export function CreatePostModal({
       const API_BASE_URL =
         process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
 
-      // 수정 모드일 때 비밀번호 검증
-      if (isEditMode && editingEntry) {
-        const verifyResponse = await fetch(
-          `${API_BASE_URL}/api/verifyGuestbookPassword`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              seq: editingEntry.seq,
-              pwd: formData.pwd,
-            }),
-          }
-        );
-
-        if (!verifyResponse.ok) {
-          throw new Error("비밀번호가 일치하지 않습니다.");
-        }
-      }
-
       const response = await fetch(`${API_BASE_URL}/api/saveGuestbook`, {
         method: "POST",
         headers: {
@@ -119,9 +98,28 @@ export function CreatePostModal({
       });
 
       if (!response.ok) {
+        // 네트워크/서버 오류
         throw new Error(
           isEditMode ? "게시물 수정에 실패했습니다." : "게시물 작성에 실패했습니다."
         );
+      }
+
+      const result = await response.json().catch(() => null);
+      const updatedCount = typeof result === "number" ? result : Number(result);
+
+      if (isNaN(updatedCount)) {
+        throw new Error("서버 응답을 해석할 수 없습니다.");
+      }
+
+      if (isEditMode) {
+        if (updatedCount === 0) {
+          // 패스워드 불일치 or 존재하지 않는 seq
+          throw new Error("비밀번호가 일치하지 않습니다.");
+        }
+      } else {
+        if (updatedCount === 0) {
+          throw new Error("게시물 작성에 실패했습니다.");
+        }
       }
 
       onSuccess?.();
@@ -219,10 +217,11 @@ export function CreatePostModal({
                 variant="outline"
                 onClick={handleClose}
                 disabled={isLoading}
+                className="cursor-pointer"
               >
                 취소
               </Button>
-              <Button type="submit" disabled={isLoading} className="flex-1">
+              <Button type="submit" disabled={isLoading} className="flex-1 cursor-pointer">
                 {isLoading
                   ? isEditMode
                     ? "수정 중..."
