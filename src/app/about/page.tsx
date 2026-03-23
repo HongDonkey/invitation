@@ -3,8 +3,8 @@ import KakaoMap from "@/components/kakaoMap";
 
 const AboutPage = () => {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8 text-center">About</h1>
+    <div className="container mx-auto py-8 px-3 max-w-4xl pt-20">
+      <h1 className="text-3xl font-bold mb-2 text-center">About</h1>
 
       <Card className="mb-8">
         <CardHeader>

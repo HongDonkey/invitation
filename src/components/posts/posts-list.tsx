@@ -102,7 +102,7 @@ export function PostsList({ initialEntries }: PostsListProps) {
   );
 
   return (
-    <div className="container mx-auto py-8 px-3 max-w-2xl pt-20">
+    <div className="container mx-auto py-8 px-3 max-w-4xl pt-20">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold mb-2">360 피드백</h1>
