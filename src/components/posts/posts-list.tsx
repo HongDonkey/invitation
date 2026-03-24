@@ -80,14 +80,23 @@ export function PostsList({ initialEntries }: PostsListProps) {
         }
       );
 
-      if (!response.ok) {
-        throw new Error("비밀번호가 일치하지 않습니다.");
+      const result = await response.json().catch(() => null);
+      console.log(typeof result)
+      // 상태코드는 200이더라도 백엔드 성공 여부 플래그를 확인
+      if (result === 0) {
+        const message =
+          (result && (result.message || result.error)) ||
+          "비밀번호가 일치하지 않습니다.";
+        throw new Error(message);
       }
 
+      // 실제 성공일 때만 모달 닫기 + 화면 새로고침
+      else if (result === 1) {
       setIsDeleteModalOpen(false);
       setEntryToDelete(null);
       setDeletePassword("");
       window.location.reload();
+      }
     } catch (err) {
       setDeleteError(
         err instanceof Error ? err.message : "삭제에 실패했습니다."
@@ -209,7 +218,10 @@ export function PostsList({ initialEntries }: PostsListProps) {
                 variant="destructive"
                 onClick={handleConfirmDelete}
                 disabled={isDeleting || !deletePassword}
-                className="flex-1"
+                className={`flex-1 transition 
+                  ${!deletePassword || isDeleting 
+                    ? "bg-gray-200 dark:bg-red-900 text-black-400 dark:text-red-200 opacity-75 cursor-not-allowed"
+                    : "bg-red-600 dark:bg-red-500 text-white hover:brightness-110"}`}
               >
                 {isDeleting ? "삭제 중..." : "삭제하기"}
               </Button>
