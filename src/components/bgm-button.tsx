@@ -72,7 +72,7 @@ export function BgmButton() {
     <div className="relative">
       <audio
         ref={audioRef}
-        src="/bgm/bgm.mp3"
+        src="/bgm/Sparkle.mp3"
         preload="metadata"
       />
       <button
