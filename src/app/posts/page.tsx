@@ -1,67 +1,28 @@
-import { PostFrontmatter } from "@/features/posts/types/post";
-import { promises as fs } from "fs";
-import { evaluate } from "next-mdx-remote-client/rsc";
-import path from "path";
-import Link from "next/link";
-import Image from "next/image";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { PostsList } from "@/components/posts/posts-list";
 
+type GuestBookEntry = {
+  seq: number;
+  name: string;
+  insDate: string;
+  contents: string;
+};
 
-const PostsPage = async() => {
-   const postFileNames = await fs.readdir(path.join(process.cwd(), "src/data/posts"));
- 
-  const posts = await Promise.all(
-    postFileNames
-      .filter((filename) => filename.endsWith(".mdx"))
-      .map(async (filename, index) => {
-        const content = await fs.readFile(path.join(process.cwd(), "src/data/posts", filename), "utf-8");
-        const { frontmatter } = await evaluate<PostFrontmatter>({
-          source: content,
-          options: {
-            parseFrontmatter: true,
-          },
-        });
-        return {
-          id: index,
-          path: "/posts/" + filename.replace(".mdx", ""),
-          ...frontmatter,
-        };
-      }),
-  );
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? "http://localhost:8080";
 
-    return (
-    <div className="container mx-auto py-8 px-3">
-      <h1 className="text-3xl font-bold mb-8">블로그 포스트</h1>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <Link key={post.id} href={post.path}>
-            <Card className="hover:border-amber-500 h-full flex flex-col overflow-hidden rounded-xl">
-              {post.thumbnail && (
-                <div>
-                  <Image
-                    src={post.thumbnail}
-                    alt={post.title}
-                    width={800}
-                    height={600}
-                    className="w-full h-auto"
-                   />
-                </div>
-              )}
-              <CardHeader>
-                <CardTitle>{post.title}</CardTitle>
-                <CardDescription>{post.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex justify-between text-sm text-muted-foreground">
-                  <span>{post.category}</span>
-                  <span>{post.date}</span>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
+async function fetchGuestBookEntries(): Promise<GuestBookEntry[]> {
+  const res = await fetch(`${API_BASE_URL}/api/getGuestbook`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error("방명록 데이터를 불러오는 데 실패했습니다.");
+  }
+
+  return res.json();
 }
-export default PostsPage
+
+export default async function PostsPage() {
+  const entries = await fetchGuestBookEntries();
+
+  return <PostsList initialEntries={entries} />;
+}

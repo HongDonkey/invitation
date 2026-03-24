@@ -1,9 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import KakaoMap from "@/components/kakaoMap";
 
 const AboutPage = () => {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-8 text-center">About</h1>
+    <div className="container mx-auto py-8 px-3 max-w-4xl pt-20">
+      <h1 className="text-3xl font-bold mb-2 text-center">About</h1>
 
       <Card className="mb-8">
         <CardHeader>
@@ -29,7 +30,7 @@ const AboutPage = () => {
         </CardContent>
       </Card>
 
-      <Card>
+      <Card className="mb-8">
         <CardHeader>
           <CardTitle>연락처</CardTitle>
         </CardHeader>
@@ -39,6 +40,23 @@ const AboutPage = () => {
             <p>📧 Email: example@email.com</p>
             <p>💻 GitHub: github.com/username</p>
             <p>🔗 LinkedIn: linkedin.com/in/username</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>오시는 길</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-muted-foreground mb-4">
+             위치를 확인해주세요.
+          </p>
+
+          <KakaoMap />
+
+          <div className="mt-4 text-sm">
+            📍 서울시 서초구 사평대로
           </div>
         </CardContent>
       </Card>

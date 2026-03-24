@@ -50,6 +50,7 @@ export function TableOfContents({ toc }: TableOfContentsProps) {
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    e.stopPropagation(); // prevent modal flip when clicking toc link
     const targetId = href.substring(1); // # 제거
     const element = document.getElementById(targetId);
     
