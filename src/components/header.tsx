@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link"
 import { ThemeToggleButton } from "@/components/theme-toggle-button";
+import { BgmButton } from "@/components/bgm-button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
 import { useState } from "react";
@@ -27,6 +28,7 @@ export default function Header() {
           </nav>
  
         {/* 테마 변경 버튼 */}
+				<BgmButton />
 				<ThemeToggleButton />
         {/* 모바일 메뉴 */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
