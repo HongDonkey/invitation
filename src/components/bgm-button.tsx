@@ -11,13 +11,14 @@ export function BgmButton() {
 
   useEffect(() => {
     // 컴포넌트 마운트 시 오디오 요소 설정
+    // 가장 처음 렌더링 될 때 한번만 실행하기 위해 deps에 빈배열
     const audio = audioRef.current;
     if (audio) {
       audio.loop = true;
       audio.volume = volume;
     }
   }, []);
-
+  
   // 음량 변경 후 오디오 요소에 반영
   useEffect(() => {
     if (audioRef.current) {
