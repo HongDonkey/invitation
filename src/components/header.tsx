@@ -29,7 +29,7 @@ export default function Header() {
  
         {/* 테마 변경 버튼 */}
 				<BgmButton />
-				<ThemeToggleButton />
+				{/* <ThemeToggleButton /> */}
         {/* 모바일 메뉴 */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                 <SheetTrigger asChild>
