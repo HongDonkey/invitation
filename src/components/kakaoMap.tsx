@@ -19,9 +19,15 @@ export default function KakaoMap() {
       const options = {
         center: new window.kakao.maps.LatLng(37.50359, 127.02041), // 좌표 수정
         level: 3,
+        draggable: true,
+        scrollwheel: true,
+        disableDoubleClickZoom: false,
+        keyboardShortcuts: false,
       };
 
       const map = new window.kakao.maps.Map(container, options);
+      map.setDraggable(true);
+      map.setZoomable(true);
 
       const markerPosition = new window.kakao.maps.LatLng(37.50359, 127.02041);
       const marker = new window.kakao.maps.Marker({
@@ -41,5 +47,11 @@ export default function KakaoMap() {
     });
   }, []);
 
-  return <div ref={mapRef} className="w-full h-64 rounded-xl" />;
+  return (
+    <div
+      ref={mapRef}
+      className="w-full h-64 rounded-xl"
+      style={{ touchAction: "none" }}
+    />
+  );
 }

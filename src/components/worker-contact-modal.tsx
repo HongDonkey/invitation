@@ -64,7 +64,7 @@ export function WorkerContactModal({ isOpen, onClose, workerId }: WorkerContactM
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md bg-white dark:bg-slate-950 rounded-lg shadow-lg p-6"
+        className="relative w-[80%] md:w-full max-w-md bg-white dark:bg-slate-950 rounded-lg shadow-lg p-6"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -117,7 +117,7 @@ export function WorkerContactModal({ isOpen, onClose, workerId }: WorkerContactM
                   href={`mailto:${worker.accountNo}`}
                   className="text-blue-600 dark:text-blue-400 hover:underline break-all"
                 >
-                  {worker.accountNo} {worker.bank}
+                  {worker.accountNo}<br></br>{worker.bank}
                 </a>
               </div>
 
