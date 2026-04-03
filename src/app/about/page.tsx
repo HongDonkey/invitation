@@ -51,7 +51,7 @@ const AboutPage = () => {
 
   return (
     <div className="container mx-auto py-8 px-3 max-w-4xl pt-20">
-      <h1 className="text-3xl font-bold mb-2 text-center">About</h1>
+      <h1 className="text-3xl font-bold mb-2 text-center">결혼식</h1>
 
       <Card className="mb-8">
         <CardHeader>
@@ -187,11 +187,70 @@ const AboutPage = () => {
 
           <KakaoMap />
 
-          <div className="mt-4 text-sm">
-            📍 서울시 서초구 사평대로
+        <div className="mt-6 text-sm text-gray-700 space-y-6">
+          {/* 주소 */}
+          <div className="text-base font-medium">
+            📍 경기 안산시 단원구 광덕1로 171
           </div>
+
+          {/* 지하철 */}
+          <div className="border-t pt-4">
+            <div className="flex items-center gap-2 font-semibold">
+              <span className="w-2 h-2 bg-pink-300 inline-block"></span>
+              🚉 지하철
+            </div>
+            <div className="mt-2 space-y-1 text-gray-600">
+              <p>4호선 고잔역 2번 출구</p>
+              <p>셔틀버스는 예식 2시간 후까지 운행합니다.</p>
+              <p>(셔틀버스 5~7분 간격 수시운행 / 도보 15~20분)</p>
+            </div>
+          </div>
+
+          {/* 버스 */}
+          <div className="border-t pt-4">
+            <div className="flex items-center gap-2 font-semibold">
+              <span className="w-2 h-2 bg-orange-300 inline-block"></span>
+              🚌 버스
+            </div>
+            <div className="mt-2 space-y-1 text-gray-600">
+              <p>안산 문화숲의 광장 하차 : 88</p>
+              <p>동남레이크빌 하차 : 99-1, 3100</p>
+              <p>대림호수공원아파트 하차 : 77, 98, 3</p>
+            </div>
+          </div>
+
+          {/* 자가용 */}
+          <div className="border-t pt-4">
+            <div className="flex items-center gap-2 font-semibold">
+              <span className="w-2 h-2 bg-gray-400 inline-block"></span>
+              🚗 자가용
+            </div>
+            <div className="mt-2 space-y-1 text-gray-600">
+              <p>서울방향 - 안산JC - 안산IC - 법원검찰청 - AW컨벤션</p>
+              <p>수원방향 - 수인산업도로 - 법원검찰청 - AW컨벤션</p>
+              <p>인천방향 - 서안산IC - 법원검찰청 - AW컨벤션</p>
+              <p>영동고속도로 - 안산IC - 법원검찰청 - AW컨벤션</p>
+              <p>서해안고속도로 - 매송IC - 해안로(호수공원) - 시청방향 - AW컨벤션</p>
+            </div>
+          </div>
+
+          {/* 주차장 */}
+          <div className="border-t pt-4">
+            <div className="flex items-center gap-2 font-semibold">
+              <span className="w-2 h-2 bg-green-400 inline-block"></span>
+              🅿️ 주차장
+            </div>
+            <div className="mt-2 space-y-1 text-gray-600">
+              <p>제1주차장 : AW컨벤션 지상, 지하 1층, 2층</p>
+              <p>제2주차장 : 양지주차타워 (AW컨벤션주차타워)</p>
+              <p>제3주차장 : AW컨벤션 정문 맞은편 공영주차장</p>
+              <p>제4주차장 : MK주차타워</p>
+            </div>
+          </div>
+        </div>
         </CardContent>
       </Card>
+
 
       <WorkerContactModal
         isOpen={isModalOpen}

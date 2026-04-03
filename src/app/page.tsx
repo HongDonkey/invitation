@@ -49,7 +49,7 @@ const MainPage =  async () => {
         <p className="text-xl text-muted-foreground mb-8">LOCAL TEST</p> */}
         <Button asChild>
           <Link href="/posts" className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:opacity-90 transition">
-            포스트 보러가기
+            방명록 보러가기
           </Link>
         </Button>
       </section>

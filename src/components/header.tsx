@@ -22,9 +22,9 @@ export default function Header() {
         <div className="flex items-center justify-between gap-3 py-6 md:gap-9">
           {/* 데스크탑 링크 */}       
           <nav className="hidden items-center space-x-8 md:flex">
-            <Link href="/about" className="transition-colors hover:text-blue-500">About</Link>
-            <Link href="/" className="transition-colors hover:text-blue-500">Home</Link>
-            <Link href="/posts" className="transition-colors hover:text-blue-500">Posts</Link>
+            <Link href="/about" className="transition-colors hover:text-blue-500">결혼식</Link>
+            <Link href="/" className="transition-colors hover:text-blue-500">앨범</Link>
+            <Link href="/posts" className="transition-colors hover:text-blue-500">방명록</Link>
             
           </nav>
  

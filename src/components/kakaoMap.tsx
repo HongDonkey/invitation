@@ -17,7 +17,7 @@ export default function KakaoMap() {
     window.kakao.maps.load(() => {
       const container = mapRef.current;
       const options = {
-        center: new window.kakao.maps.LatLng(37.50359, 127.02041), // 좌표 수정
+        center: new window.kakao.maps.LatLng(37.308254971301146, 126.82880075695446), // 좌표 수정
         level: 3,
         draggable: true,
         scrollwheel: true,
@@ -29,7 +29,7 @@ export default function KakaoMap() {
       map.setDraggable(true);
       map.setZoomable(true);
 
-      const markerPosition = new window.kakao.maps.LatLng(37.50359, 127.02041);
+      const markerPosition = new window.kakao.maps.LatLng(37.308254971301146, 126.82880075695446);
       const marker = new window.kakao.maps.Marker({
         position: markerPosition,
       });

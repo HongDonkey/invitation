@@ -114,8 +114,8 @@ export function PostsList({ initialEntries }: PostsListProps) {
     <div className="container mx-auto py-8 px-3 max-w-4xl pt-20">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h1 className="text-3xl font-bold mb-2">360 피드백</h1>
-          <p className="text-muted-foreground">피드백현황</p>
+          <h1 className="text-3xl font-bold mb-2">방명록💌</h1>
+          <p className="text-muted-foreground">축하인사를 남겨주세요</p>
         </div>
         <Button
           onClick={handleCreateNew}
