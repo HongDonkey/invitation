@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { ThemeToggleButton } from "@/components/theme-toggle-button";
+// import { ThemeToggleButton } from "@/components/theme-toggle-button";
 import { BgmButton } from "@/components/bgm-button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
@@ -13,23 +13,24 @@ export default function Header() {
       <div className="container mx-auto flex h-full items-center justify-between">
         {/* left logo div */}
         <div className="flex items-center">
-          <Link href="/" className="text-2xl font-bold">
-            talenX
+          <Link href="/about" className="text-xl font-bold">
+            🎉Yes, We got married!🎉
           </Link>
         </div>
  
         {/* right button group div */}
         <div className="flex items-center justify-between gap-3 py-6 md:gap-9">
-          {/* 데스크탑 링크 */}
+          {/* 데스크탑 링크 */}       
           <nav className="hidden items-center space-x-8 md:flex">
+            <Link href="/about" className="transition-colors hover:text-blue-500">About</Link>
             <Link href="/" className="transition-colors hover:text-blue-500">Home</Link>
             <Link href="/posts" className="transition-colors hover:text-blue-500">Posts</Link>
-            <Link href="/about" className="transition-colors hover:text-blue-500">About</Link>
+            
           </nav>
  
         {/* 테마 변경 버튼 */}
 				<BgmButton />
-				<ThemeToggleButton />
+				{/* <ThemeToggleButton /> */}
         {/* 모바일 메뉴 */}
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                 <SheetTrigger asChild>

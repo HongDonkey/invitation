@@ -18,15 +18,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "우리의 결혼식 | 청첩장",
-//   description: "우리의 결혼식에 초대합니다. 방명록을 통해 축하 메시지를 남겨주세요.",
-// };
-
 export const metadata: Metadata = {
-  title: "talenX",
-  description: "talenX 공식 웹사이트입니다. 최신 기술 트렌드, 개발 팁, 그리고 다양한 프로그래밍 관련 콘텐츠를 제공합니다. 함께 성장하는 개발자 커뮤니티에 참여하세요!",
+  title: "동기랑 지현이 결혼합니다.💕",
+  description: "우리의 결혼식에 초대합니다. 방명록을 통해 축하 메시지를 남겨주세요.",
 };
+
+// export const metadata: Metadata = {
+//   title: "talenX",
+//   description: "talenX 공식 웹사이트입니다. 최신 기술 트렌드, 개발 팁, 그리고 다양한 프로그래밍 관련 콘텐츠를 제공합니다. 함께 성장하는 개발자 커뮤니티에 참여하세요!",
+// };
 
 export default function RootLayout({
 	children,
