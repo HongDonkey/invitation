@@ -44,9 +44,6 @@ export default function RootLayout({
 							<CssBaseline />
 						{children}
 						<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=1fc22a2fdc3bb0919ac9d97dbe578287&autoload=false&libraries=services"></script>
-						{/* <Script 
-							type="text/javascript"
-							src="//dapi.kakao.com/v2/maps/sdk.js?appkey=555cf69427bbaafbbc740088a0973e04"/> */}
 					</ThemeProvider>
 					</AppRouterCacheProvider>
 			</body>
